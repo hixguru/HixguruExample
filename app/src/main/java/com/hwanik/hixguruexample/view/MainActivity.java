@@ -51,19 +51,11 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
         Subscription editTextSub =
                 RxTextView.textChanges(userEmail)
-                        .subscribe(new Action1<CharSequence>() {
-                            @Override
-                            public void call(CharSequence charSequence) {
-                                mainPresenter.validateEmail(String.valueOf(charSequence));
-                            }
-                        });
+                        .subscribe(text -> mainPresenter.validateEmail(String.valueOf(text)));
 
         RxView.clicks(btnStartKotlinActivity)
-                .subscribe(new Action1<Void>() {
-                    @Override
-                    public void call(Void aVoid) {
-                        mainPresenter.login(userEmail.getText().toString(), userPassword.getText().toString());
-                    }
+                .subscribe(aVoid -> {
+                    mainPresenter.login(userEmail.getText().toString(), userPassword.getText().toString());
                 });
     }
 

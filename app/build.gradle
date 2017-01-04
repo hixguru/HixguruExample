@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android' // 코틀린 플러그인을 적용합니다.
 apply plugin: 'kotlin-android-extensions' // 익스텐션 플러그인 적용
+apply plugin: 'me.tatarka.retrolambda' // retrolambda
 
 buildscript {
     ext.kotlin_version = '1.0.0'
@@ -36,7 +37,12 @@ android {
         }
     }
     sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
         main.java.srcDirs += 'src/main/kotlin' // src/main/kotlin 디렉터리를 소스 디렉터리에 추가합니다.
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
@@ -57,4 +63,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-moshi:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
