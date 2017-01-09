@@ -10,23 +10,33 @@
         android:id="@+id/user_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="이메일을 입력해주세요."/>
+        android:hint="이메일을 입력해주세요."
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/user_email_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="비밀번호를 입력해주세요."/>
+        android:hint="비밀번호를 입력해주세요."
+        android:visibility="gone"/>
 
     <EditText
         android:id="@+id/user_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비밀번호를 입력해주세요."/>
+        android:text="비밀번호를 입력해주세요."
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btn_start_kotlin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그인하기"/>
+        android:text="로그인하기"
+        android:visibility="gone"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
 </LinearLayout>
