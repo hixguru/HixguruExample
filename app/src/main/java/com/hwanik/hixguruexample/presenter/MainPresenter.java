@@ -11,7 +11,5 @@ public interface MainPresenter {
     void validateEmail(String email);
 
     interface View {
-        void showEmailWarning();
-        void showEmailCorrect();
     }
 }

@@ -1,13 +1,16 @@
 package com.hwanik.hixguruexample.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.hwanik.hixguruexample.R;
+import com.hwanik.hixguruexample.util.Util;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +22,13 @@ import butterknife.ButterKnife;
 public class CustomAdapter extends PagerAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private int[] fanArtImages = {
+            R.drawable.bg1,
+            R.drawable.bg2,
+            R.drawable.bg3
+    };
 
+    @BindView(R.id.fan_art) ImageView fanArt;
     @BindView(R.id.content) EditText content;
 
     public CustomAdapter(Context context) {
@@ -29,7 +38,7 @@ public class CustomAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 10;
+        return fanArtImages.length;
     }
 
     @Override
@@ -39,6 +48,8 @@ public class CustomAdapter extends PagerAdapter {
         ButterKnife.bind(this, view);
 
         container.addView(view);
+        Bitmap img = Util.decodeSampledBitmapFromResource(mContext.getResources(), fanArtImages[position], 200, 400);
+        fanArt.setImageBitmap(img);
 
         return view;
     }

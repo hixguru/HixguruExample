@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.graphics.BitmapCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -39,9 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
     @Inject Application mApplication;
     @Inject MainPresenter mainPresenter;
 
-    @BindView(R.id.user_email) EditText userEmail;
-    @BindView(R.id.user_password) EditText userPassword;
-    @BindView(R.id.user_email_warning) TextView userEmailWarning;
     @BindView(R.id.btn_start_kotlin) Button btnStartKotlinActivity;
     @BindView(R.id.viewpager) ViewPager viewPager;
 
@@ -58,26 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
                 .build()
                 .inject(this);
 
-        viewPager.setAdapter(new CustomAdapter(this));
-
-        Subscription editTextSub =
-                RxTextView.textChanges(userEmail)
-                        .subscribe(text -> mainPresenter.validateEmail(String.valueOf(text)));
-
-        RxView.clicks(btnStartKotlinActivity)
-                .subscribe(aVoid -> {
-                    mainPresenter.login(userEmail.getText().toString(), userPassword.getText().toString());
-                });
-    }
-
-    @Override
-    public void showEmailWarning() {
-        userEmailWarning.setText("정확한 이메일 형식이 아닙니다.");
-    }
-
-    @Override
-    public void showEmailCorrect() {
-        userEmailWarning.setText("사용할 수 있는 이메일 형식입니다.");
+        viewPager.setAdapter(new CustomAdapter(MainActivity.this));
     }
 }
 

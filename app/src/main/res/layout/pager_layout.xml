@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
+
+    <ImageView
+        android:id="@+id/fan_art"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
 
     <EditText
         android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="전하실 메시지를 입력해주세요."
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:layout_centerInParent="true"/>
 
-</LinearLayout>
+</RelativeLayout>

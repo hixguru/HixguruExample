@@ -34,10 +34,5 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void validateEmail(String email) {
         boolean isRight = !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-        if (!isRight) {
-            view.showEmailWarning();
-        } else {
-            view.showEmailCorrect();
-        }
     }
 }
