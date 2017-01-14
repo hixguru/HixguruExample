@@ -33,6 +33,14 @@ public class Util {
         return inSampleSize;
     }
 
+    /**
+     *
+     * @param res context.getResources()
+     * @param resId 이미지의 resourceId
+     * @param reqWidth 원하는 가로 픽셀 값
+     * @param reqHeight 원하는 세로 픽셀값
+     * @return Bitmap
+     */
     public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
                                                          int reqWidth, int reqHeight) {
         // First decode with inJustDecodeBounds=true to check dimensions
